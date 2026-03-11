@@ -1,4 +1,7 @@
+import time
+
 def SuccessfulPairsOfSpellsandPortions(spells: list[int], potions: list[int], success: int):
+    start = time.perf_counter()
     output = []
     n = len(spells)
     m = len(potions)
@@ -9,10 +12,11 @@ def SuccessfulPairsOfSpellsandPortions(spells: list[int], potions: list[int], su
         while j<m and potions[j]<k:
             j+=1
         output.append(m-j)
-    return output
+    return output, time.perf_counter() - start
 
 # Using bisection method here...
 def SuccessfulPairsOfSpellsandPortions_2(spells: list[int], potions: list[int], success: int):
+    start = time.perf_counter()
     output = []
     n = len(spells)
     m = len(potions)
@@ -28,7 +32,7 @@ def SuccessfulPairsOfSpellsandPortions_2(spells: list[int], potions: list[int], 
             else:
                 high = mid
         output.append(m-low)
-    return output
+    return output, time.perf_counter()-start
 
 print(SuccessfulPairsOfSpellsandPortions(spells = [5,1,3], potions = [1,2,3,4,5], success = 7))
 
